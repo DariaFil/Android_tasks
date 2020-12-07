@@ -5,6 +5,7 @@ import android.text.TextUtils
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -13,21 +14,15 @@ object NoteRepository {
         HashMap<Long, Note?>()
 
     fun initialize(context: Context) {
-        try {
-            BufferedReader(InputStreamReader(context.assets.open("notes.txt")))
-                .use { reader ->
-                    var date = reader.readLine()
-                    var text = reader.readLine()
-                    var id: Long = 0
-                    while (!TextUtils.isEmpty(text)) {
-                        NOTE_LIST[id] = Note(id, text, date)
-                        ++id
+        var id: Long = 0
+        val text = "Котики это мило"
+        val date = "12.12.2020"
+        val parser = SimpleDateFormat()
+        val draw = 0
+        while (id < 10) {
+            NOTE_LIST[id] = Note(id, text, parser.parse(date), draw)
+        }
 
-                        date = reader.readLine()
-                        text = reader.readLine()
-                    }
-                }
-        } catch (e: IOException) { }
     }
 
     val noteList: List<Note?>

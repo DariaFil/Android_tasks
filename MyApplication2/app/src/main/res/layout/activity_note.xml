@@ -17,8 +17,7 @@
             android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/noteDateTextView"
